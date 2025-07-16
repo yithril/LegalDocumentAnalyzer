@@ -1,4 +1,4 @@
-# 🧾 Legal Document Intelligence Platform
+# Legal Document Intelligence Platform
 
 A scalable, multi-tenant system for analyzing, classifying, and summarizing legal documents through agentic AI workflows. Designed to enable law firms to extract structure, timelines, actors, relationships, and summaries from unstructured legal documents while respecting role-based access control (RBAC) and tenant isolation.
 
