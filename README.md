@@ -45,7 +45,7 @@ This platform is designed to:
 
 ### System Design
 
-![System Design](SystemDesign-LegalDocuments.png)
+![System Design](docs/SystemDesign-LegalDocuments.png)
 
 ---
 
