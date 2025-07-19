@@ -39,7 +39,7 @@ class DocumentService:
         finally:
             session.close()
 
-    def soft_delete_document(self, document_id: str, updated_by: str):
+    def delete_document(self, document_id: str, updated_by: str):
         session = self.Session()
         try:
             repo = DocumentRepository(session)
