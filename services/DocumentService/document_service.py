@@ -105,4 +105,32 @@ class DocumentService:
             repo = DocumentMetadataRepository(session)
             return repo.get_by_key(document_id, key)
         finally:
+            session.close()
+    
+    def update_document_status(self, document_id: str, status: str, step: str = None, error_details: dict = None):
+        """Update document status and step"""
+        session = self.Session()
+        try:
+            repo = DocumentRepository(session)
+            document = repo.get_by_id(document_id)
+            if document:
+                document.update_status(status, step, error_details)
+                repo.update(document)
+                return document
+            return None
+        finally:
+            session.close()
+    
+    def mark_document_failed(self, document_id: str, step: str, error_type: str, error_message: str, retryable: bool = True):
+        """Mark document as failed with error details"""
+        session = self.Session()
+        try:
+            repo = DocumentRepository(session)
+            document = repo.get_by_id(document_id)
+            if document:
+                document.mark_failed(step, error_type, error_message, retryable)
+                repo.update(document)
+                return document
+            return None
+        finally:
             session.close() 

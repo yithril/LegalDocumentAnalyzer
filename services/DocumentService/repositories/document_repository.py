@@ -39,5 +39,9 @@ class DocumentRepository:
         if is_active is not None:
             query = query.filter_by(is_active=is_active)
         if status:
+            # Validate status before filtering
+            valid_statuses = ['uploaded', 'processing', 'failed', 'completed']
+            if status not in valid_statuses:
+                raise ValueError(f"Invalid status: {status}. Must be one of {valid_statuses}")
             query = query.filter_by(status=status)
         return query.all() 
